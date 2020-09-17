@@ -6,10 +6,7 @@
 
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Gallery</h1>
-    <a href="{{ route('gallery.create') }}" class="btn btn-sm btn-primary shadow-sm">
-      <i class="fas fa-plus fa-sm text-white-50"></i>Tambah Gallery
-    </a>
+    <h1 class="h3 mb-0 text-gray-800">Transactions</h1>
   </div>
   <div class="row">
     <div class="card-body">
@@ -19,24 +16,30 @@
             <tr>
               <th>ID</th>
               <th>Travel</th>
-              <th>Gambar</th>
+              <th>User</th>
+              <th>Visa</th>
+              <th>Total</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            @forelse ($items as $item)
+          @forelse ($items as $item)
             <tr>
               <td> {{ $item->id }} </td>
               <td> {{ $item->travel_package->title }} </td>
+              <td> {{ $item->user->name }} </td>
+              <td> {{ $item->additional_visa }} </td>
+              <td> {{ $item->transaction_total }} </td>
+              <td> {{ $item->transaction_status }} </td>
               <td>
-              <img src="{{ Storage::url($item->image) }}" alt="" style="width: 150px" class="img-thumbnail">
-              </td>
-
-              <td>
-              <a href="{{ route('gallery.edit', $item->id) }}" class="btn btn-info">
+              <a href="{{ route('transaction.show', $item->id) }}" class="btn btn-primary">
+                <i class="fa fa-eye"></i>
+              </a>
+              <a href="{{ route('transaction.edit', $item->id) }}" class="btn btn-info">
                 <i class="fa fa-pencil-alt"></i>
               </a>
-            <form action="{{ route('gallery.destroy', $item->id) }}" method="POST" class="d-inline">
+            <form action="{{ route('transaction.destroy', $item->id) }}" method="POST" class="d-inline">
               @csrf
               @method('delete')
               <button class="btn btn-danger">
@@ -51,7 +54,7 @@
                     Data Kosong
                   </td>
                 </tr>
-            @endforelse
+          @endforelse
           </tbody>
         </table>
       </div>

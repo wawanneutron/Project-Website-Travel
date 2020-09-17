@@ -18,8 +18,8 @@ class CreateTransactionsTable extends Migration
             $table->integer('travel_packages_id');
             $table->integer('users_id')->nullable();
             $table->integer('additional_visa');
-            $table->integer('transaction_total');
-            $table->string('transaction_status');
+            $table->integer('transactions_total');
+            $table->string('transactions_status');
             // in_cart, pandding, succsess, cancle, failed
             $table->softDeletes();
             $table->timestamps();
