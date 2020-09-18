@@ -15,7 +15,7 @@
                         moment you never see before</p>
                 </div>
             </div>
-            <a href="#" class="btn btn-get-started ">
+            <a href="#popular" class="btn btn-get-started ">
                 Get Started
             </a>
         </header>   
@@ -31,7 +31,7 @@
                         moment you never see before</p>
                 </div>
             </div>
-            <a href="#" class="btn btn-get-started ">
+            <a href="#popular" class="btn btn-get-started ">
                 Get Started
             </a>
         </main> 
@@ -76,46 +76,18 @@
         <section class="section-popular-content" id="popularContent">
             <div class="container">
                 <div class="section-popular-travel row justify-content-center">
+                    @foreach ($items as $item)
                     <div class="col-sm-6 col-md-4 col-lg-3">
-                        <div class="card-travel text-center d-flex flex-column"
-                            style="background-image: url(frontend/images/sindoro.jpg);">
-                            <div class="travel-contry">INDONESIA</div>
-                            <div class="div travel-location">SINDORO, CENTRAL JAVA</div>
-                            <div class="travel-button mt-auto">
-                                <a href="{{ route('details') }}" class="btn btn-travel-details px-4">View Detail</a>
+                            <div class="card-travel text-center d-flex flex-column"
+                                style="background-image: url('{{ $item->galleries->count() ? Storage::url($item->galleries->first()->image) : '' }}');">
+                                
+                                <div class="travel-contry">{{ $item->location }}</div>
+                                <div class="div travel-location">{{ $item->title }}</div>
+                                <div class="travel-button mt-auto"></div>
+                                <a href="{{ route('details', $item->slug ) }}" class="btn btn-travel-details px-4">View Detail</a>
                             </div>
-                        </div>
                     </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <div class="card-travel text-center d-flex flex-column"
-                            style="background-image: url(frontend/images/prau.jpg);">
-                            <div class="travel-contry">INDONESIA</div>
-                            <div class="div travel-location">PRAU, CENTRAL JAVA</div>
-                            <div class="travel-button mt-auto">
-                                <a href="{{ route('details') }}" class="btn btn-travel-details px-4">View Detail</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <div class="card-travel text-center d-flex flex-column"
-                            style="background-image: url(frontend/images/rinjani.jpg);">
-                            <div class="travel-contry">INDONESIA</div>
-                            <div class="div travel-location">RINJANI, LOMBOK ISLAND</div>
-                            <div class="travel-button mt-auto">
-                                <a href="{{ route('details') }}" class="btn btn-travel-details px-4">View Detail</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <div class="card-travel text-center d-flex flex-column"
-                            style="background-image: url(frontend/images/bromo.jpg);">
-                            <div class="travel-contry">INDONESIA</div>
-                            <div class="div travel-location">BROMO, EAST JAVA</div>
-                            <div class="travel-button mt-auto">
-                                <a href="{{ route('details') }}" class="btn btn-travel-details px-4">View Detail</a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -216,7 +188,7 @@
         <div class="justify-content-center">
             <div class="col-12 text-center">
                 <a href="#" class="btn btn-need-help mt-2 py-1">I Need Help</a>
-                <a href="" class="btn btn-get-started py-1 mx-2">Get Started</a>
+            <a href="{{ route('register') }}" class="btn btn-get-started py-1 mx-2">Get Started</a>
             </div>
         </div>
 @endsection
