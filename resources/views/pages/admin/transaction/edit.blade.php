@@ -22,47 +22,24 @@
 
   <div class="card shadow">
     <div class="card-body">
-      <form action="{{ route('travel-package.update', $item->id) }}" method="POST">
+      <form action="{{ route('transaction.update', $item->id) }}" method="POST">
         @method('PUT')
         @csrf
-        <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" class="form-control" name="title" placeholder="Title" value="{{ $item->title }}">
-        </div>
-        <div class="form-group">
-          <label for="location">location</label>
-          <input type="text" class="form-control" name="location" placeholder="Location" value="{{ $item->location }}">
-        </div>
-        <div class="form-group">
-          <label for="about">About</label>
-          <textarea name="about" id="About" rows="10" class="d-block w-100 form-control">{{ $item->about }}</textarea>
-        </div>
-        <div class="form-group">
-          <label for="culture">Culture</label>
-          <input type="text" class="form-control" name="culture" placeholder="Culture" value="{{ $item->culture }}">
-        </div>
-        <div class="form-group">
-          <label for="canton">Canton</label>
-          <input type="text" class="form-control" name="canton" placeholder="Canton" value="{{ $item->canton }}">
-        </div>
-        <div class="form-group">
-          <label for="deperture_date">Departure Date</label>
-          <input type="date" class="form-control" name="deperture_date" placeholder="Departure Date" value="{{ $item->deperture_date }}">
-        </div>
-        <div class="form-group">
-          <label for="duration">Duration</label>
-          <input type="text" class="form-control" name="duration" placeholder="Duration" value="{{ $item->duration }}">
-        </div>
-        <div class="form-group">
-          <label for="type">Type</label>
-          <input type="text" class="form-control" name="type" placeholder="Type" value="{{ $item->type }}">
-        </div>
-        <div class="form-group">
-          <label for="type">Price</label>
-          <input type="number" class="form-control" name="price" placeholder="Price" value="{{ $item->price }}">
-        </div>
+          <div class="form-group">
+            <label for="transaction_status">Status</label>
+            <select name="transaction_status" required class="form-control" id="">
+              <option value="{{ $item->transaction_status }}">
+                Don't Update ( {{ $item->transaction_status }} )
+              </option>
+              <option value="IN_CART">In Cart</option>
+              <option value="PENDING">Pending</option>
+              <option value="SUCCESS">Succsess</option>
+              <option value="CANCEL">Cancel</option>
+              <option value="FAILED">Failed</option>
+            </select>
+          </div>
           <button class="btn btn-primary btn-block" type="submit">
-            Edit
+            Update
           </button>
       </form>
     </div>

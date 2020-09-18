@@ -11,7 +11,7 @@ class Transaction extends Model
 
     protected $fillable = [
         'travel_packages_id', 'users_id', 'additional_visa',
-        'transactions_total', 'transactions_status'
+        'transactions_total', 'transaction_status'
 
     ];
 
