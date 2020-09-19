@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\DetailController;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,15 +19,33 @@ use Illuminate\Support\Facades\Route;
 // home
 Route::get('/', 'HomeController@index')
     ->name('home');
+
 // details
 Route::get('/details/{slug}', 'DetailController@index')
     ->name('details');
+
 // checkout
-Route::get('/checkout', 'CheckoutController@index')
-    ->name('checkout');
+Route::post('/checkout/{id}', 'CheckoutController@process')
+    ->name('checkout-process')
+    ->middleware(['auth', 'verified']);
+
+Route::get('/checkout/{id}', 'CheckoutController@index')
+    ->name('checkout')
+    ->middleware(['auth', 'verified']);
+
+Route::post('/checkout/create/{detail_id}', 'CheckoutController@create')
+    ->name('cheackout-create')
+    ->middleware(['auth', 'verified']);
+
+Route::get('/checkout/remove/{detail_id}', 'CheckoutController@remove')
+    ->name('checkout-remove')
+    ->middleware(['auth', 'verified']);
+
+
 // checkout succses
 Route::get('/checkout/succses', 'CheckoutController@succses')
-    ->name('checkout-succses');
+    ->name('checkout-succses')
+    ->Middleware(['auth', 'verified']);
 
 // admin dashboard
 Route::prefix('admin')
