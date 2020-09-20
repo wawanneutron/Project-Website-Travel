@@ -34,16 +34,14 @@ Route::get('/checkout/{id}', 'CheckoutController@index')
     ->middleware(['auth', 'verified']);
 
 Route::post('/checkout/create/{detail_id}', 'CheckoutController@create')
-    ->name('cheackout-create')
+    ->name('checkout-create')
     ->middleware(['auth', 'verified']);
 
 Route::get('/checkout/remove/{detail_id}', 'CheckoutController@remove')
     ->name('checkout-remove')
     ->middleware(['auth', 'verified']);
 
-
-// checkout succses
-Route::get('/checkout/succses', 'CheckoutController@succses')
+Route::get('/checkout/confirm/{id}', 'CheckoutController@succses')
     ->name('checkout-succses')
     ->Middleware(['auth', 'verified']);
 
