@@ -61,11 +61,10 @@ class CheckoutController extends Controller
 
         $transaction->transaction_total -=
             $transaction->travel_package->price;
-
         $transaction->save();
         $item->delete();
 
-        return redirect()->route('checkout', $item->transacion_id);
+        return redirect()->route('checkout', $item->transactions_id);
     }
 
     public function create(Request $request, $id)

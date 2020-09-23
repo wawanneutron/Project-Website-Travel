@@ -69,15 +69,8 @@
                         \Carbon\Carbon::now() ? 'Active' : 'Inactive' }}
                       </td>
                       <td class="align-middle">
-                        <a href="{{ url('checkout-remove', $detail->id) }}">
-                            <svg width="1.5em" height="1.5em" viewBox="0 0 16 16"
-                              class="bi bi-trash" fill="currentColor"
-                              xmlns="http://www.w3.org/2000/svg">
-                              <path
-                                  d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                              <path fill-rule="evenodd"
-                                  d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                            </svg>
+                        <a href="{{ route('checkout-remove', $detail->id) }}">
+                          <i class="fas fa-fw fa-trash"></i>
                         </a>
                       </td>
                      </tr>
@@ -94,20 +87,25 @@
         <div class="member mt-3">
           <h2>Add Member</h2>
             <!-- form input add member -->
-            <form action="" class="form-inline">
-                <label for="inputUsername" class="sr-only">Name</label>
-                <input type="text" class="form-control mb-2 mt-2 mr-2 " id="inputUsername"placeholder="Username" required>
+            <form action="{{ route('checkout-create', $item->id) }}" class="form-inline" method="POST">
+              @csrf
+                <label for="username" class="sr-only">Name</label>
+                <input type="text" name="username" class="form-control mb-2 mt-2 mr-2 " id="username"placeholder="Username" required>
 
-                <label for="inputVisa" class="sr-only">Visa</label>
-                <select name="inputVisa" id="inputVisa" class="custom-select mb-2 mt-2 mr-2">
-                  <option value="VISA" selected>VISA</option>
-                  <option value="30 Days">30 Days</option>
-                  <option value="N/A">N/A</option>
+                <label for="nationality" class="sr-only">Nationality</label>
+                <input type="text" name="nationality" class="form-control mb-2 mt-2 mr-2 " style="width: 100px" id="nationality"placeholder="Nationality" required>
+
+
+                <label for="is_visa" class="sr-only">Visa</label>
+                <select name="is_visa" id="is_visa" required class="custom-select mb-2 mt-2 mr-2">
+                  <option value="" selected>VISA</option>
+                  <option value="1">30 Days</option>
+                  <option value="0">N/A</option>
                 </select>
 
-                <label for="doePassport" class="sr-only">DOE Passport</label>
+                <label for="doe_passport" class="sr-only">DOE Passport</label>
                 <div class="input-group mb-2 mt-2 mr-2">
-                  <input type="text" class="form-control datepicker" id="doePassport"placeholder="DOE Passport">
+                  <input type="text" class="form-control datepicker" id="doe_passport" name="doe_passport" placeholder="DOE Passport">
                 </div>
 
                 <button type="submit" class="btn btn-add-now mb-2 px-4 mt-2">Add Now</button>
@@ -129,25 +127,25 @@
                       <table class="trip-informations">
                           <tr>
                               <th width="50%" class="date">Members</th>
-                              <td width="50%" class="text-right">3 persons</td>
+                              <td width="50%" class="text-right">{{ $item->details->count() }} person</td>
                           </tr>
                           <tr>
                               <th width="50%" class="date">Additional VISA</th>
-                              <td width="50%" class="text-right">$ 190,00</td>
+                              <td width="50%" class="text-right">$ {{ $item->additional_visa }},00</td>
                           </tr>
                           <tr>
                               <th width="50%" class="date">Trip Price</th>
-                              <td width="50%" class="text-right">$ 80,00 / person</td>
+                              <td width="50%" class="text-right">$ {{ $item->travel_package->price }},00 / person</td>
                           </tr>
                           <tr>
                               <th width="50%" class="date">Sub Total</th>
-                              <td width="50%" class="text-right">$ 360,00 </td>
+                              <td width="50%" class="text-right">$ {{ $item->transaction_total }},00 </td>
                           </tr>
                           <tr>
                               <th width="50%" class="date">Total (+Unique)</th>
                               <td width="50%" class="text-right text-total">
-                                  <span class="text-blue">$ 360,</span>
-                                  <span class="text-orange">33</span>
+                                  <span class="text-blue">$ {{ $item->transaction_total }},</span>
+                              <span class="text-orange">{{ mt_rand(0,999) }}</span>
                               </td>
 
                           </tr>
@@ -188,10 +186,10 @@
                   </div>
                   <!-- CTE -->
                   <div class="join-container">
-                      <a href="{{ url('checkout-succses', $item->id) }}" class="btn btn-block btn-join-now mt-3 py-2">I Have Made Payment</a>
+                      <a href="{{ route('checkout-succses', $item->id) }}" class="btn btn-block btn-join-now mt-3 py-2">I Have Made Payment</a>
                   </div>
                   <div class="text-center mt-3">
-                      <a href="{{ url('details', $item->travel_package->slug) }}" class="text-muted mt-3 py-2">Cancle
+                      <a href="{{ route('details', $item->travel_package->slug) }}" class="text-muted mt-3 py-2">Cancle
                           Booking</a>
                   </div>
               </div>
@@ -210,6 +208,7 @@
 <script>
   $(document).ready(function () {
       $('.datepicker').datepicker({
+          format: 'yyyy-mm-dd',
           uiLibrary: 'bootstrap4'
           // jika ingin mengcustom icon
           // icons: {
