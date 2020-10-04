@@ -585,7 +585,6 @@ header .animasi-header.muncul {
 .section-details-content .features .descriptions {
   margin-left: 40px;
   overflow: hidden;
-  float: left;
 }
 
 .section-details-content .features .descriptions .features-image {
@@ -651,6 +650,7 @@ header .animasi-header.muncul {
 }
 
 .section-details-content .join-container .btn-join-now {
+  color: #ffffff;
   background-color: #ff6f01;
 }
 
@@ -718,5 +718,87 @@ header .animasi-header.muncul {
   opacity: 1;
   -webkit-transform: translate(0, 0);
           transform: translate(0, 0);
+}
+
+@media (min-width: 992px) {
+  .picture-login img {
+    -webkit-box-shadow: -9px 10px 16px 0px rgba(0, 0, 0, 0.47);
+    box-shadow: -9px 10px 16px 0px rgba(0, 0, 0, 0.47);
+  }
+  .login-container {
+    background: linear-gradient(50deg, #fff 60%, #176592 40%);
+    width: 100vw;
+    height: 100vh;
+  }
+  .login-container .page-login {
+    height: 100vh;
+  }
+  .login-container .page-login .btn-login {
+    background-color: #ff6f01;
+  }
+  .login-container .page-login .btn-login:hover {
+    background-color: #F38A38;
+  }
+  .login-container .page-login .section-left h1 {
+    font-family: "Playfair Display";
+    font-weight: bold;
+    font-size: 50px;
+    text-align: left;
+    color: #071c4d;
+  }
+  .login-container .page-login .section-right a {
+    font-family: Assistant;
+    font-weight: 300;
+    text-decoration: underline;
+    font-size: 16px;
+    text-align: center;
+    color: #a09b9b;
+  }
+  .login-container .page-login .section-right a:hover {
+    color: #2e2f30;
+  }
+  .login-container .page-login .section-right .card {
+    -webkit-box-shadow: -5px 5px 11px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: -5px 5px 11px -4px rgba(0, 0, 0, 0.75);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .login-container {
+    background: linear-gradient(30deg, #fff 60%, #629cc4 40%);
+    width: 100vw;
+    height: 100vh;
+  }
+  .login-container .page-login {
+    height: 100vh;
+  }
+  .login-container .page-login .btn-login {
+    background-color: #ff6f01;
+  }
+  .login-container .page-login .btn-login:hover {
+    background-color: #F38A38;
+  }
+  .login-container .page-login .section-left h1 {
+    font-family: "Playfair Display";
+    font-weight: bold;
+    font-size: 40px;
+    text-align: left;
+    color: #071c4d;
+  }
+  .login-container .page-login .section-right a {
+    font-family: Assistant;
+    font-weight: 300;
+    text-decoration: underline;
+    font-size: 16px;
+    text-align: center;
+    color: #a09b9b;
+  }
+  .login-container .page-login .section-right a:hover {
+    color: #2e2f30;
+  }
+  .login-container .page-login .section-right .card {
+    -webkit-box-shadow: -5px 5px 11px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: -5px 5px 11px -4px rgba(0, 0, 0, 0.75);
+  }
 }
 /*# sourceMappingURL=main.css.map */

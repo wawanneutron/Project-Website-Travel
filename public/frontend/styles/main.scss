@@ -654,6 +654,7 @@ header {
         margin-top: 30px;
         margin-bottom: 50px;
 
+
         h3 {
             font-size: 18px;
             font-weight: 600;
@@ -669,7 +670,7 @@ header {
 
             margin-left: 40px;
             overflow: hidden;
-            float: left;
+
 
             .features-image {
                 width: 50px;
@@ -744,7 +745,7 @@ header {
         margin-top: -18px;
 
         .btn-join-now {
-
+            color: #ffffff;
             background-color: #ff6f01;
 
             &:hover {
@@ -817,5 +818,121 @@ header {
         opacity: 1;
         transform: translate(0, 0);
 
+    }
+}
+
+// login desktop version
+@media (min-width: 992px) {
+    .picture-login {
+        img {
+            -webkit-box-shadow: -9px 10px 16px 0px rgba(0, 0, 0, 0.47);
+            -moz-box-shadow: -9px 10px 16px 0px rgba(0, 0, 0, 0.47);
+            box-shadow: -9px 10px 16px 0px rgba(0, 0, 0, 0.47);
+        }
+    }
+
+
+    .login-container {
+        background: linear-gradient(50deg, #fff 60%, #176592 40%);
+        width: 100vw;
+        height: 100vh;
+
+        .page-login {
+            height: 100vh;
+
+
+            .btn-login {
+                background-color: #ff6f01;
+
+                &:hover {
+                    background-color: #F38A38;
+                }
+            }
+
+            .section-left {
+                h1 {
+                    font-family: "Playfair Display";
+                    font-weight: bold;
+                    font-size: 50px;
+                    text-align: left;
+                    color: #071c4d;
+                }
+            }
+
+            .section-right {
+                a {
+                    font-family: Assistant;
+                    font-weight: 300;
+                    text-decoration: underline;
+                    font-size: 16px;
+                    text-align: center;
+                    color: #a09b9b;
+
+                    &:hover {
+                        color: #2e2f30;
+                    }
+                }
+
+                .card {
+                    -webkit-box-shadow: -5px 5px 11px -4px rgba(0, 0, 0, 0.75);
+                    -moz-box-shadow: -5px 5px 11px -4px rgba(0, 0, 0, 0.75);
+                    box-shadow: -5px 5px 11px -4px rgba(0, 0, 0, 0.75);
+                }
+            }
+        }
+    }
+}
+
+
+// mobile
+@media (max-width: 575.98px) {
+    .login-container {
+        background: linear-gradient(30deg, #fff 60%, #629cc4 40%);
+        width: 100vw;
+        height: 100vh;
+
+        .page-login {
+            height: 100vh;
+
+
+            .btn-login {
+                background-color: #ff6f01;
+
+                &:hover {
+                    background-color: #F38A38;
+                }
+            }
+
+            .section-left {
+                h1 {
+                    font-family: "Playfair Display";
+                    font-weight: bold;
+                    font-size: 40px;
+                    text-align: left;
+                    color: #071c4d;
+                }
+            }
+
+            .section-right {
+                a {
+                    font-family: Assistant;
+                    font-weight: 300;
+                    text-decoration: underline;
+                    font-size: 16px;
+                    text-align: center;
+                    color: #a09b9b;
+
+                    &:hover {
+                        color: #2e2f30;
+                    }
+                }
+
+                .card {
+                    -webkit-box-shadow: -5px 5px 11px -4px rgba(0, 0, 0, 0.75);
+                    -moz-box-shadow: -5px 5px 11px -4px rgba(0, 0, 0, 0.75);
+                    box-shadow: -5px 5px 11px -4px rgba(0, 0, 0, 0.75);
+                }
+            }
+        }
     }
 }
