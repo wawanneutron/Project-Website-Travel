@@ -10,10 +10,12 @@ use App\TransactionDetail;
 use App\TravelPackage;
 
 use Carbon\Carbon;
-
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
+use Midtrans\Config;
+use Midtrans\Snap;
 
 class CheckoutController extends Controller
 {
@@ -110,10 +112,44 @@ class CheckoutController extends Controller
 
 
 
+        // Set Configurasi Midtrans
+        Config::$serverKey = config('midtrans.serverKey');
+        Config::$isProduction = config('midtrans.isProduction');
+        Config::$isSanitized = config('midtrans.isSanitized');
+        Config::$is3ds = config('midtrans.is3ds');
 
+        // Buat array untuk dikirim ke midtrans
+        $midtrans_params = [
+            'transaction_details' => [
+                'order_id' => 'Pealip Trip -' . $transaction->id,
+                'gross_amount' => (int) $transaction->transaction_total
+            ],
+            'customer_details' => [
+                'first_name' => $transaction->user->name,
+                'email' => $transaction->user->email,
+            ],
+            'enabled_payments' => ['gopay'],
+            'vtweb' => []
+        ];
+
+
+        try {
+            //Get Snap Payment Page URL
+            $paymentUrl = Snap::createTransaction($midtrans_params)->redirect_url;
+
+            // Redirect to Snap Payment Page
+            return redirect($paymentUrl);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+
+        /*
         // kirim E-Ticket ke user
+
         Mail::to($transaction->user)->send(new TransactionSuccess($transaction));
 
         return view('pages.succses');
+        */
     }
 }

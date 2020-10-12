@@ -5,3 +5,4 @@
     rel="stylesheet">
 <link rel="stylesheet" href="{{ url('frontend/styles/main.css') }}">
 <link href="{{ url('backend/vendor/fontawesome-free/css/all.min.css')}} " rel="stylesheet" type="text/css">
+<link rel="icon"  href="{{ url('frontend/images/vue.png') }}">

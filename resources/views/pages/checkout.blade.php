@@ -151,38 +151,10 @@
                           </tr>
                       </table>
                       <hr>
-
                       <!-- payments -->
                       <h3>Payment Intructions</h3>
-                      <p class="payment-instructions">Please complete the payment before you
-                          continue the trip</p>
-                      <div class="bank">
-                        <div class="bank-item pb-3">
-                          <img src="{{ url('frontend/images/ic_payment.png') }}" alt="" class="bank-image">
-                          <div class="descriptions">
-                              <h4>PT Pealip Adventure</h4>
-                              <p>
-                                  Bank Central Asia
-                                  <br>
-                                  7641054503</p>
-                          </div>
-                          <div class="clear-fix"></div>
-
-                        </div>
-                      </div>
-                      <div class="bank">
-                        <div class="bank-item pb-3">
-                          <img src="{{ url('frontend/images/ic_payment.png') }}" alt="" class="bank-image">
-                          <div class="descriptions">
-                              <h4>PT Pealip Adventure</h4>
-                              <p>
-                                  Bank Central Asia
-                                  <br>
-                                  7641054503</p>
-                          </div>
-                          <div class="clear-fix"></div>
-                        </div>
-                      </div>
+                      <p class="payment-instructions">You will be redirected to another page to pay using GO-PAY</p>
+                    <img src="{{ url('frontend/images/gopay.png') }}" class="w-50" alt="">
                   </div>
                   <!-- CTE -->
                   <div class="join-container">

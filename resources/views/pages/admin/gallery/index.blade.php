@@ -12,9 +12,10 @@
     </a>
   </div>
   <div class="row">
-    <div class="card-body">
+    <div class="col-lg">
+      <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-bordered" width="100%" cellspacing="0">
+        <table class="table table-bordered table-responsive-sm" width="100%" cellspacing="0">
           <thead>
             <tr>
               <th>ID</th>
@@ -56,6 +57,8 @@
         </table>
       </div>
     </div>
+    </div>
+    
   </div>
 
 

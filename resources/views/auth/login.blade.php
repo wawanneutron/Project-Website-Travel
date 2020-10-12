@@ -1,6 +1,17 @@
 @extends('layouts.login')
 
 @section('content')
+@if ($errors->any())
+  <div class="alert alert-danger justify-content-center text-center" >
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <ul>
+      @foreach ($errors->all() as $error)
+      
+        <p> {{ $error }} </p>    
+      @endforeach
+    </ul>
+  </div>  
+  @endif
 <main class="login-container">
     <div class="container">
         <div class="row page-login d-flex align-items-center">
