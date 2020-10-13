@@ -128,7 +128,8 @@ class CheckoutController extends Controller
                 'first_name' => $transaction->user->name,
                 'email' => $transaction->user->email,
             ],
-            'enabled_payments' => ['gopay'],
+            'enabled_payments' => ['gopay', 'indomaret', 'alfamaret', 'akulaku', 'shopeepay', 'bca_klikpay', 'bca_va', 'bni_va', 'bri_va', 'other_va'],
+
             'vtweb' => []
         ];
 

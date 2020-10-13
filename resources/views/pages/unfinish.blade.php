@@ -10,8 +10,7 @@
                 <img src="{{ url('frontend/images/ic-succsess.png') }}" alt="" class="mb-2">
                 <h1>Oopss!!</h1>
                 <p>
-                    Your transaction in unfinished.
-                    
+                    Your transaction in unfinished.     
                 </p>
             </div>
             <div class="animasi-btn">
